@@ -9,7 +9,7 @@ import fepamLogoImg from './assets/FEPAM LOGO.png';
 import isoLogoImg from './assets/logo iso.png';
 import ibamaLogoImg from './assets/IBAMA LOGO.png';
 
-const fachadaPrincipal = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200';
+const fachadaPrincipal = '/fachada-lateral.jpg';
 const fachadaLateral = 'https://images.unsplash.com/photo-1565608411333-99d651d54ed1?auto=format&fit=crop&q=80&w=1200';
 const interiorImg = 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200';
 const recepcaoImg = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200';
@@ -116,7 +116,7 @@ const App: React.FC = () => {
               <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full">
                 <div className="max-w-4xl animate-fade-in-up">
                   <div className="inline-flex items-center gap-2 bg-fabricio-yellow text-fabricio-blue font-black px-4 py-1.5 rounded mb-8 text-sm uppercase tracking-widest shadow-xl">
-                    <Icons.Globe /> Estratégia no III Polo Petroquímico
+                    <Icons.Globe /> Localização Estratégica junto ao III Polo Petroquímico
                   </div>
                   <h1 className="text-5xl md:text-8xl font-black mb-6 leading-none uppercase tracking-tighter italic">
                     Transformando <br />
