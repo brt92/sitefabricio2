@@ -12,8 +12,9 @@ const interiorImg = 'https://images.unsplash.com/photo-1513828583688-c52646db42d
 const recepcaoImg = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200';
 const laboratorioImg = 'https://images.unsplash.com/photo-1581093458791-9f3c3250bb8b?auto=format&fit=crop&q=80&w=1200';
 const ecologiaImg = 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1200';
-const fepamLogo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/FEPAM_RS.png/320px-FEPAM_RS.png';
-const isoLogo = 'https://www.iso.org/files/live/sites/isoorg/files/about/ISO_logos/ISO_9001_Logo.jpg';
+const fepamLogo = '/fepam-logo.png';
+const isoLogo = '/iso-9001-logo.png';
+const ibamaLogo = '/ibama-logo.png';
 
 interface Candidate {
   id: string;
@@ -31,7 +32,7 @@ const App: React.FC = () => {
   const [submittedResumes, setSubmittedResumes] = useState<Candidate[]>([
     { id: '1', name: 'Candidato Exemplo', email: 'rh@fabriciopetro.com.br', jobTitle: 'Banco de Talentos', fileName: 'curriculo.pdf', timestamp: '24/05/2024' }
   ]);
-  
+
   const [adminUser, setAdminUser] = useState('');
   const [adminPass, setAdminPass] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -41,7 +42,7 @@ const App: React.FC = () => {
     setSelectedJob(jobId);
     setCurrentPage(Page.CAREERS);
     setTimeout(() => {
-        document.getElementById('resume-form')?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('resume-form')?.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
@@ -82,12 +83,12 @@ const App: React.FC = () => {
     const form = e.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
     const newCand: Candidate = {
-        id: Date.now().toString(),
-        name: formData.get('name') as string,
-        email: formData.get('email') as string,
-        jobTitle: selectedJob === 'any' ? 'Banco de Talentos' : dynamicVacancies.find(v => v.id === selectedJob)?.title || 'Vaga',
-        fileName: 'curriculo_enviado.pdf',
-        timestamp: new Date().toLocaleDateString('pt-BR')
+      id: Date.now().toString(),
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      jobTitle: selectedJob === 'any' ? 'Banco de Talentos' : dynamicVacancies.find(v => v.id === selectedJob)?.title || 'Vaga',
+      fileName: 'curriculo_enviado.pdf',
+      timestamp: new Date().toLocaleDateString('pt-BR')
     };
     setSubmittedResumes([newCand, ...submittedResumes]);
     alert('Currículo recebido! Agradecemos seu interesse.');
@@ -97,39 +98,39 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col pt-20 font-sans selection:bg-fabricio-yellow selection:text-fabricio-blue">
       <Navigation currentPage={currentPage} setPage={setCurrentPage} />
-      
+
       <main className="flex-grow">
         {currentPage === Page.HOME && (
           <div className="animate-fade-in">
             {/* Hero Section Refatorada */}
             <section className="relative h-[80vh] flex items-center overflow-hidden">
-              <div 
-                className="absolute inset-0 z-0 bg-cover bg-center scale-105" 
-                style={{ backgroundImage: `url(${fachadaPrincipal})`, filter: 'brightness(0.35)' }} 
+              <div
+                className="absolute inset-0 z-0 bg-cover bg-center scale-105"
+                style={{ backgroundImage: `url(${fachadaPrincipal})`, filter: 'brightness(0.35)' }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-fabricio-blue/60 to-transparent z-0"></div>
-              
+
               <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white w-full">
                 <div className="max-w-4xl animate-fade-in-up">
                   <div className="inline-flex items-center gap-2 bg-fabricio-yellow text-fabricio-blue font-black px-4 py-1.5 rounded mb-8 text-sm uppercase tracking-widest shadow-xl">
                     <Icons.Globe /> Estratégia no III Polo Petroquímico
                   </div>
                   <h1 className="text-5xl md:text-8xl font-black mb-6 leading-none uppercase tracking-tighter italic">
-                    Transformando <br/>
+                    Transformando <br />
                     <span className="text-fabricio-yellow">Polímeros</span> com Precisão
                   </h1>
                   <p className="text-xl md:text-3xl text-gray-100 mb-12 max-w-2xl font-light leading-relaxed border-l-8 border-fabricio-yellow pl-8">
                     {COMPANY_INFO.motto}
                   </p>
                   <div className="flex flex-wrap gap-5">
-                    <button 
-                      onClick={() => setCurrentPage(Page.ABOUT)} 
+                    <button
+                      onClick={() => setCurrentPage(Page.ABOUT)}
                       className="bg-fabricio-yellow text-fabricio-blue px-12 py-5 rounded font-black uppercase text-sm hover:brightness-110 transition-all transform hover:-translate-y-1 shadow-[0_10px_30px_rgba(255,241,0,0.3)]"
                     >
                       A Empresa
                     </button>
-                    <button 
-                      onClick={() => setCurrentPage(Page.SERVICES)} 
+                    <button
+                      onClick={() => setCurrentPage(Page.SERVICES)}
                       className="backdrop-blur-lg bg-white/10 border-2 border-white/30 text-white px-12 py-5 rounded font-black uppercase text-sm hover:bg-white hover:text-fabricio-blue transition-all transform hover:-translate-y-1"
                     >
                       Nossas Soluções
@@ -192,13 +193,13 @@ const App: React.FC = () => {
                     </div>
                   </div>
                   <div className="lg:w-1/2 relative">
-                    <img 
-                      src={interiorImg} 
-                      alt="Operação Fabrício" 
+                    <img
+                      src={interiorImg}
+                      alt="Operação Fabrício"
                       className="rounded-3xl shadow-2xl object-cover w-full h-[500px]"
                     />
                     <div className="absolute -bottom-8 -left-8 bg-fabricio-yellow p-8 rounded-2xl shadow-xl hidden md:block">
-                      <p className="text-fabricio-blue font-black italic text-xl">"Excelência que <br/>gera valor para <br/>o seu produto."</p>
+                      <p className="text-fabricio-blue font-black italic text-xl">"Excelência que <br />gera valor para <br />o seu produto."</p>
                     </div>
                   </div>
                 </div>
@@ -241,20 +242,20 @@ const App: React.FC = () => {
                 <h2 className="text-4xl font-bold text-fabricio-blue leading-tight">Compromisso com o Futuro dos Plásticos</h2>
                 <p className="text-lg text-gray-600 leading-relaxed">{COMPANY_INFO.history}</p>
                 <div className="grid grid-cols-2 gap-8">
-                    <div className="border-l-4 border-fabricio-yellow pl-4">
-                        <span className="block text-3xl font-black text-fabricio-blue">6000m²</span>
-                        <span className="text-sm font-bold text-gray-400 uppercase">Área Total</span>
-                    </div>
-                    <div className="border-l-4 border-fabricio-yellow pl-4">
-                        <span className="block text-3xl font-black text-fabricio-blue">RS</span>
-                        <span className="text-sm font-bold text-gray-400 uppercase">Sede Triunfo</span>
-                    </div>
+                  <div className="border-l-4 border-fabricio-yellow pl-4">
+                    <span className="block text-3xl font-black text-fabricio-blue">6000m²</span>
+                    <span className="text-sm font-bold text-gray-400 uppercase">Área Total</span>
+                  </div>
+                  <div className="border-l-4 border-fabricio-yellow pl-4">
+                    <span className="block text-3xl font-black text-fabricio-blue">RS</span>
+                    <span className="text-sm font-bold text-gray-400 uppercase">Sede Triunfo</span>
+                  </div>
                 </div>
               </div>
               <div className="relative group">
                 <img src={recepcaoImg} alt="Sede" className="rounded-[2.5rem] shadow-2xl object-cover h-[500px] w-full transform transition-transform group-hover:scale-[1.02]" />
                 <div className="absolute -bottom-10 -left-10 bg-fabricio-blue text-white p-10 rounded-3xl shadow-2xl hidden xl:block">
-                    <p className="font-bold text-xl italic opacity-80">"Tecnologia a serviço da indústria global."</p>
+                  <p className="font-bold text-xl italic opacity-80">"Tecnologia a serviço da indústria global."</p>
                 </div>
               </div>
             </div>
@@ -270,9 +271,9 @@ const App: React.FC = () => {
               {SERVICES.map((s, idx) => (
                 <div key={s.id} className="group bg-white rounded-[2rem] shadow-sm hover:shadow-2xl transition-all border border-slate-100 overflow-hidden flex flex-col h-full">
                   <div className="h-56 overflow-hidden relative">
-                    <img 
-                      src={s.imageUrl} 
-                      alt={s.title} 
+                    <img
+                      src={s.imageUrl}
+                      alt={s.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-fabricio-blue/20 group-hover:bg-transparent transition-colors"></div>
@@ -290,28 +291,28 @@ const App: React.FC = () => {
                     </div>
                     <div className="pt-6 border-t border-slate-100 flex items-center justify-between mt-4">
                       <span className="text-xs font-black text-slate-300 uppercase tracking-widest">Referência Industrial</span>
-                      <div className="h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-400">{idx+1}</div>
+                      <div className="h-10 w-10 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-400">{idx + 1}</div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
             <div className="max-w-7xl mx-auto px-4 mt-20">
-                <div className="bg-fabricio-blue rounded-[3rem] p-12 text-white flex flex-col lg:flex-row items-center gap-12 overflow-hidden relative">
-                    <div className="absolute top-0 right-0 opacity-10 scale-150 rotate-12"><Icons.Cog /></div>
-                    <div className="z-10 flex-1">
-                        <h2 className="text-3xl font-bold mb-4">Micronização Customizada</h2>
-                        <p className="text-blue-100 leading-relaxed">{COMPANY_INFO.micronizationDetail}</p>
-                    </div>
-                    <div className="bg-white/10 p-8 rounded-3xl border border-white/20 backdrop-blur-md">
-                        <h4 className="font-bold mb-4 text-fabricio-yellow">Análises Laboratoriais:</h4>
-                        <ul className="space-y-2 text-sm">
-                            <li className="flex items-center gap-2"><Icons.Check /> Granulometria Rigorosa</li>
-                            <li className="flex items-center gap-2"><Icons.Check /> Fluidez de Material</li>
-                            <li className="flex items-center gap-2"><Icons.Check /> Densidade Aparente</li>
-                        </ul>
-                    </div>
+              <div className="bg-fabricio-blue rounded-[3rem] p-12 text-white flex flex-col lg:flex-row items-center gap-12 overflow-hidden relative">
+                <div className="absolute top-0 right-0 opacity-10 scale-150 rotate-12"><Icons.Cog /></div>
+                <div className="z-10 flex-1">
+                  <h2 className="text-3xl font-bold mb-4">Micronização Customizada</h2>
+                  <p className="text-blue-100 leading-relaxed">{COMPANY_INFO.micronizationDetail}</p>
                 </div>
+                <div className="bg-white/10 p-8 rounded-3xl border border-white/20 backdrop-blur-md">
+                  <h4 className="font-bold mb-4 text-fabricio-yellow">Análises Laboratoriais:</h4>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-center gap-2"><Icons.Check /> Granulometria Rigorosa</li>
+                    <li className="flex items-center gap-2"><Icons.Check /> Fluidez de Material</li>
+                    <li className="flex items-center gap-2"><Icons.Check /> Densidade Aparente</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -325,68 +326,74 @@ const App: React.FC = () => {
 
             {/* Certificação ISO 9001 Section */}
             <div className="max-w-7xl mx-auto px-4 mt-20">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div className="relative">
-                        <img src={laboratorioImg} alt="Qualidade" className="rounded-[3rem] shadow-2xl object-cover h-[450px] w-full" />
-                        <div className="absolute -top-10 -left-10 bg-white p-8 rounded-full shadow-xl animate-bounce hidden xl:block">
-                            <img src={isoLogo} alt="ISO 9001" className="h-24" />
-                        </div>
-                    </div>
-                    <div className="space-y-6">
-                        <span className="text-fabricio-blue font-black uppercase tracking-widest text-sm">Padrão Internacional</span>
-                        <h2 className="text-4xl font-bold text-fabricio-dark leading-tight">Certificação de Excelência em Gestão</h2>
-                        <p className="text-lg text-gray-600 italic border-l-4 border-fabricio-yellow pl-6">
-                            "{COMPANY_INFO.qualityPolicy}"
-                        </p>
-                        <p className="text-gray-500 leading-relaxed">
-                            A Fabrício Petroquímica mantém processos auditados que garantem a rastreabilidade total de nossos lotes micronizados, assegurando que as indústrias de rotomoldagem recebam materiais com granulometria e fluidez constantes.
-                        </p>
-                    </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="relative">
+                  <img src={laboratorioImg} alt="Qualidade" className="rounded-[3rem] shadow-2xl object-cover h-[450px] w-full" />
+                  <div className="absolute -top-10 -left-10 bg-white p-8 rounded-full shadow-xl animate-bounce hidden xl:block">
+                    <img src={isoLogo} alt="ISO 9001" className="h-24" />
+                  </div>
                 </div>
+                <div className="space-y-6">
+                  <span className="text-fabricio-blue font-black uppercase tracking-widest text-sm">Padrão Internacional</span>
+                  <h2 className="text-4xl font-bold text-fabricio-dark leading-tight">Certificação de Excelência em Gestão</h2>
+                  <p className="text-lg text-gray-600 italic border-l-4 border-fabricio-yellow pl-6">
+                    "{COMPANY_INFO.qualityPolicy}"
+                  </p>
+                  <p className="text-gray-500 leading-relaxed">
+                    A Fabrício Petroquímica mantém processos auditados que garantem a rastreabilidade total de nossos lotes micronizados, assegurando que as indústrias de rotomoldagem recebam materiais com granulometria e fluidez constantes.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Objetivos de Qualidade Grid */}
             <div className="bg-slate-50 mt-24 py-24">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="text-center mb-16">
-                        <h3 className="text-3xl font-black text-fabricio-blue uppercase tracking-tighter">Nossos Pilares Estratégicos</h3>
-                        <div className="h-1.5 w-20 bg-fabricio-yellow mx-auto mt-4 rounded-full"></div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {COMPANY_INFO.qualityObjectives.map((obj, i) => (
-                            <div key={i} className="bg-white p-8 rounded-3xl shadow-sm border-b-4 border-transparent hover:border-fabricio-yellow hover:shadow-xl transition-all transform hover:-translate-y-2">
-                                <div className="bg-slate-100 w-12 h-12 rounded-xl flex items-center justify-center text-fabricio-blue mb-6">
-                                    <Icons.Check />
-                                </div>
-                                <h4 className="font-bold text-lg text-slate-800 leading-snug">{obj}</h4>
-                            </div>
-                        ))}
-                    </div>
+              <div className="max-w-7xl mx-auto px-4">
+                <div className="text-center mb-16">
+                  <h3 className="text-3xl font-black text-fabricio-blue uppercase tracking-tighter">Nossos Pilares Estratégicos</h3>
+                  <div className="h-1.5 w-20 bg-fabricio-yellow mx-auto mt-4 rounded-full"></div>
                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {COMPANY_INFO.qualityObjectives.map((obj, i) => (
+                    <div key={i} className="bg-white p-8 rounded-3xl shadow-sm border-b-4 border-transparent hover:border-fabricio-yellow hover:shadow-xl transition-all transform hover:-translate-y-2">
+                      <div className="bg-slate-100 w-12 h-12 rounded-xl flex items-center justify-center text-fabricio-blue mb-6">
+                        <Icons.Check />
+                      </div>
+                      <h4 className="font-bold text-lg text-slate-800 leading-snug">{obj}</h4>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Meio Ambiente Section */}
             <div className="max-w-7xl mx-auto px-4 mt-24">
-                <div className="bg-fabricio-dark rounded-[4rem] overflow-hidden flex flex-col lg:flex-row items-stretch shadow-2xl">
-                    <div className="lg:w-1/2 p-12 lg:p-20 space-y-8 flex flex-col justify-center">
-                        <div className="flex items-center gap-4 text-fabricio-yellow">
-                            <Icons.Globe />
-                            <h3 className="text-2xl font-black uppercase tracking-widest">Sustentabilidade</h3>
-                        </div>
-                        <h2 className="text-4xl font-bold text-white">Licenciamento e Proteção Ambiental</h2>
-                        <p className="text-gray-400 text-lg">
-                            Operamos sob a regência da <strong>FEPAM</strong>, garantindo que nosso beneficiamento de resinas pós-indústria contribua para a economia circular sem agredir o ecossistema local.
-                        </p>
-                        <div className="inline-flex items-center gap-4 bg-white/10 px-8 py-4 rounded-2xl border border-white/20">
-                            <img src={fepamLogo} alt="FEPAM" className="h-10 brightness-0 invert" />
-                            <span className="text-fabricio-yellow font-mono text-xl font-bold">{COMPANY_INFO.fepamLicense}</span>
-                        </div>
+              <div className="bg-fabricio-dark rounded-[4rem] overflow-hidden flex flex-col lg:flex-row items-stretch shadow-2xl">
+                <div className="lg:w-1/2 p-12 lg:p-20 space-y-8 flex flex-col justify-center">
+                  <div className="flex items-center gap-4 text-fabricio-yellow">
+                    <Icons.Globe />
+                    <h3 className="text-2xl font-black uppercase tracking-widest">Sustentabilidade</h3>
+                  </div>
+                  <h2 className="text-4xl font-bold text-white">Licenciamento e Proteção Ambiental</h2>
+                  <p className="text-gray-400 text-lg">
+                    Operamos sob a regência da <strong>FEPAM</strong>, garantindo que nosso beneficiamento de resinas pós-indústria contribua para a economia circular sem agredir o ecossistema local.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-6">
+                    <div className="inline-flex items-center gap-4 bg-white/10 px-8 py-4 rounded-2xl border border-white/20">
+                      <img src={fepamLogo} alt="FEPAM" className="h-10 brightness-0 invert" />
+                      <span className="text-fabricio-yellow font-mono text-xl font-bold">{COMPANY_INFO.fepamLicense}</span>
                     </div>
-                    <div className="lg:w-1/2 relative min-h-[400px]">
-                        <img src={ecologiaImg} alt="Natureza" className="absolute inset-0 w-full h-full object-cover opacity-80" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-fabricio-dark to-transparent lg:hidden"></div>
+                    <div className="inline-flex items-center gap-4 bg-white/10 px-8 py-4 rounded-2xl border border-white/20">
+                      <img src={ibamaLogo} alt="IBAMA" className="h-10 brightness-0 invert" />
+                      <span className="text-fabricio-yellow font-mono text-xl font-bold">IBAMA</span>
                     </div>
+                  </div>
                 </div>
+                <div className="lg:w-1/2 relative min-h-[400px]">
+                  <img src={ecologiaImg} alt="Natureza" className="absolute inset-0 w-full h-full object-cover opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-fabricio-dark to-transparent lg:hidden"></div>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -400,37 +407,37 @@ const App: React.FC = () => {
               <div className="space-y-12">
                 <h3 className="text-3xl font-bold text-fabricio-blue">Contato Direto</h3>
                 <div className="space-y-8">
-                    <div className="flex gap-6 items-start">
-                        <div className="bg-slate-100 p-4 rounded-2xl"><Icons.Globe /></div>
-                        <div>
-                            <p className="font-bold text-slate-400 uppercase text-xs mb-1">Endereço Industrial</p>
-                            <p className="text-lg text-slate-700">{COMPANY_INFO.address}</p>
-                        </div>
+                  <div className="flex gap-6 items-start">
+                    <div className="bg-slate-100 p-4 rounded-2xl"><Icons.Globe /></div>
+                    <div>
+                      <p className="font-bold text-slate-400 uppercase text-xs mb-1">Endereço Industrial</p>
+                      <p className="text-lg text-slate-700">{COMPANY_INFO.address}</p>
                     </div>
-                    <div className="flex gap-6 items-start">
-                        <div className="bg-slate-100 p-4 rounded-2xl text-fabricio-blue"><Icons.Cog /></div>
-                        <div>
-                            <p className="font-bold text-slate-400 uppercase text-xs mb-1">Atendimento Telefônico</p>
-                            <p className="text-lg text-slate-700 font-bold">{COMPANY_INFO.phone}</p>
-                        </div>
+                  </div>
+                  <div className="flex gap-6 items-start">
+                    <div className="bg-slate-100 p-4 rounded-2xl text-fabricio-blue"><Icons.Cog /></div>
+                    <div>
+                      <p className="font-bold text-slate-400 uppercase text-xs mb-1">Atendimento Telefônico</p>
+                      <p className="text-lg text-slate-700 font-bold">{COMPANY_INFO.phone}</p>
                     </div>
-                    <div className="flex gap-6 items-start">
-                        <div className="bg-slate-100 p-4 rounded-2xl text-fabricio-blue"><Icons.Send /></div>
-                        <div>
-                            <p className="font-bold text-slate-400 uppercase text-xs mb-1">E-mail Corporativo</p>
-                            <p className="text-lg text-slate-700">{COMPANY_INFO.email}</p>
-                        </div>
+                  </div>
+                  <div className="flex gap-6 items-start">
+                    <div className="bg-slate-100 p-4 rounded-2xl text-fabricio-blue"><Icons.Send /></div>
+                    <div>
+                      <p className="font-bold text-slate-400 uppercase text-xs mb-1">E-mail Corporativo</p>
+                      <p className="text-lg text-slate-700">{COMPANY_INFO.email}</p>
                     </div>
+                  </div>
                 </div>
                 <div className="p-8 bg-fabricio-yellow/10 border border-fabricio-yellow/20 rounded-3xl">
-                    <p className="font-black text-fabricio-blue mb-2 uppercase text-sm">Horário de Funcionamento:</p>
-                    <p className="text-slate-700">{COMPANY_INFO.hours}</p>
+                  <p className="font-black text-fabricio-blue mb-2 uppercase text-sm">Horário de Funcionamento:</p>
+                  <p className="text-slate-700">{COMPANY_INFO.hours}</p>
                 </div>
               </div>
               <form className="bg-slate-50 p-12 rounded-[3rem] space-y-6 shadow-2xl border border-white" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input className="w-full p-5 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-fabricio-blue outline-none transition-all" placeholder="Seu Nome" />
-                    <input className="w-full p-5 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-fabricio-blue outline-none transition-all" placeholder="Nome da Empresa" />
+                  <input className="w-full p-5 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-fabricio-blue outline-none transition-all" placeholder="Seu Nome" />
+                  <input className="w-full p-5 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-fabricio-blue outline-none transition-all" placeholder="Nome da Empresa" />
                 </div>
                 <input className="w-full p-5 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-fabricio-blue outline-none transition-all" placeholder="Seu E-mail Corporativo" />
                 <textarea className="w-full p-5 rounded-2xl border border-slate-200 h-40 focus:ring-2 focus:ring-fabricio-blue outline-none transition-all" placeholder="Detalhes da sua solicitação técnica..."></textarea>
@@ -454,7 +461,7 @@ const App: React.FC = () => {
                       <h3 className="text-2xl font-bold text-slate-800">{v.title}</h3>
                       <p className="text-fabricio-blue font-black text-sm uppercase tracking-wider">{v.department}</p>
                       <div className="mt-4 flex flex-wrap gap-2">
-                        {v.requirements.map((r,i) => <span key={i} className="text-xs bg-slate-200 text-slate-600 px-3 py-1 rounded-full font-bold">{r}</span>)}
+                        {v.requirements.map((r, i) => <span key={i} className="text-xs bg-slate-200 text-slate-600 px-3 py-1 rounded-full font-bold">{r}</span>)}
                       </div>
                     </div>
                     <button onClick={() => handleApplyClick(v.id)} className="bg-fabricio-blue text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-900 transition-colors whitespace-nowrap">Candidatar-se</button>
@@ -505,7 +512,7 @@ const App: React.FC = () => {
                   <button onClick={() => setAdminTab('jobs')} className={`px-8 py-3 rounded-xl font-black transition-all ${adminTab === 'jobs' ? 'bg-fabricio-yellow text-fabricio-blue' : 'text-white hover:bg-white/10'}`}>VAGAS</button>
                   <button onClick={() => setAdminTab('candidates')} className={`px-8 py-3 rounded-xl font-black transition-all ${adminTab === 'candidates' ? 'bg-fabricio-yellow text-fabricio-blue' : 'text-white hover:bg-white/10'}`}>CURRÍCULOS ({submittedResumes.length})</button>
                 </div>
-                <button onClick={() => {setIsAuthenticated(false); setCurrentPage(Page.HOME)}} className="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-xl font-bold transition-colors">SAIR</button>
+                <button onClick={() => { setIsAuthenticated(false); setCurrentPage(Page.HOME) }} className="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-xl font-bold transition-colors">SAIR</button>
               </div>
             </div>
 
@@ -529,9 +536,9 @@ const App: React.FC = () => {
                           <p className="text-xl font-black text-slate-800 tracking-tight">{job.title}</p>
                           <p className="text-xs font-bold text-fabricio-blue uppercase tracking-widest">{job.department}</p>
                         </div>
-                        <button 
-                          type="button" 
-                          onClick={(e) => handleDeleteVacancy(e, job.id)} 
+                        <button
+                          type="button"
+                          onClick={(e) => handleDeleteVacancy(e, job.id)}
                           className="text-red-500 hover:bg-red-50 p-4 rounded-2xl transition-all active:scale-90"
                         >
                           <Icons.Close />
@@ -563,18 +570,18 @@ const App: React.FC = () => {
                           </td>
                           <td className="p-6">
                             <div className="flex justify-center gap-4">
-                              <button 
-                                type="button" 
+                              <button
+                                type="button"
                                 className="bg-fabricio-blue text-white px-5 py-2 rounded-xl text-xs font-black hover:bg-blue-900 flex items-center gap-2 active:scale-95 transition-transform uppercase"
                                 onClick={() => alert('Download do currículo: ' + cand.fileName)}
                               >
                                 <Icons.Download /> Baixar
                               </button>
-                              <button 
-                                type="button" 
+                              <button
+                                type="button"
                                 onClick={(e) => {
-                                    e.preventDefault();
-                                    if(confirm('Excluir currículo?')) setSubmittedResumes(prev => prev.filter(c => c.id !== cand.id));
+                                  e.preventDefault();
+                                  if (confirm('Excluir currículo?')) setSubmittedResumes(prev => prev.filter(c => c.id !== cand.id));
                                 }}
                                 className="bg-red-100 text-red-700 px-5 py-2 rounded-xl text-xs font-black hover:bg-red-600 hover:text-white flex items-center gap-2 active:scale-95 transition-transform uppercase"
                               >
