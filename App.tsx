@@ -5,6 +5,9 @@ import { Footer } from './components/Footer';
 import { ChatWidget } from './components/ChatWidget';
 import { Page, JobPosition } from './types';
 import { SERVICES, COMPANY_INFO, Icons, VACANCIES } from './constants';
+import fepamLogoImg from './assets/FEPAM LOGO.png';
+import isoLogoImg from './assets/logo iso.png';
+import ibamaLogoImg from './assets/IBAMA LOGO.png';
 
 const fachadaPrincipal = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200';
 const fachadaLateral = 'https://images.unsplash.com/photo-1565608411333-99d651d54ed1?auto=format&fit=crop&q=80&w=1200';
@@ -12,9 +15,9 @@ const interiorImg = 'https://images.unsplash.com/photo-1513828583688-c52646db42d
 const recepcaoImg = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200';
 const laboratorioImg = 'https://images.unsplash.com/photo-1581093458791-9f3c3250bb8b?auto=format&fit=crop&q=80&w=1200';
 const ecologiaImg = 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1200';
-const fepamLogo = '/fepam-logo.png';
-const isoLogo = '/iso-9001-logo.png';
-const ibamaLogo = '/ibama-logo.png';
+const fepamLogo = fepamLogoImg;
+const isoLogo = isoLogoImg;
+const ibamaLogo = ibamaLogoImg;
 
 interface Candidate {
   id: string;
