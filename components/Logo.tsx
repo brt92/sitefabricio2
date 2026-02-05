@@ -1,7 +1,7 @@
 import React from "react";
 
 // Usando caminho absoluto a partir da raiz pública para evitar erros de importação
-const logoImg = "/assets/logo-fabricio.png";
+const logoImg = "/logo-fabricio.svg";
 
 const Logo: React.FC = () => {
   return (
