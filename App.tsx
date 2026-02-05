@@ -382,12 +382,16 @@ const App: React.FC = () => {
                     Operamos sob a regência da <strong>FEPAM</strong>, garantindo que nosso beneficiamento de resinas pós-indústria contribua para a economia circular sem agredir o ecossistema local.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-6">
-                    <div className="inline-flex items-center gap-4 bg-white/10 px-8 py-4 rounded-2xl border border-white/20">
-                      <img src={fepamLogo} alt="FEPAM" className="h-10 brightness-0 invert" />
+                    <div className="inline-flex items-center gap-4 bg-white/10 pr-8 pl-2 py-2 rounded-2xl border border-white/20">
+                      <div className="bg-white p-2 rounded-xl h-14 w-14 flex items-center justify-center">
+                        <img src={fepamLogo} alt="FEPAM" className="h-full w-full object-contain" />
+                      </div>
                       <span className="text-fabricio-yellow font-mono text-xl font-bold">{COMPANY_INFO.fepamLicense}</span>
                     </div>
-                    <div className="inline-flex items-center gap-4 bg-white/10 px-8 py-4 rounded-2xl border border-white/20">
-                      <img src={ibamaLogo} alt="IBAMA" className="h-10 brightness-0 invert" />
+                    <div className="inline-flex items-center gap-4 bg-white/10 pr-8 pl-2 py-2 rounded-2xl border border-white/20">
+                      <div className="bg-white p-2 rounded-xl h-14 w-14 flex items-center justify-center">
+                        <img src={ibamaLogo} alt="IBAMA" className="h-full w-full object-contain" />
+                      </div>
                       <span className="text-fabricio-yellow font-mono text-xl font-bold">IBAMA</span>
                     </div>
                   </div>
